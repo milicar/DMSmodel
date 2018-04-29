@@ -12,7 +12,7 @@ public class DocumentType {
     private String name;
     private Path modelLocation;
     private String shortDescription;
-    private List<DocumentTypeDescriptor> documentTypeDescriptors;
+    private List<Descriptor> documentTypeDescriptors;
 
     public DocumentType() {
         this("", "", "");
@@ -23,7 +23,7 @@ public class DocumentType {
     }
 
     public DocumentType(String name, String modelLocation, String shortDescription) {
-        this.documentTypeID = generateID();
+        documentTypeID = generateID();
         this.name = name;
         this.modelLocation = Paths.get(modelLocation);
         this.shortDescription = shortDescription;
@@ -34,24 +34,24 @@ public class DocumentType {
         return 0L;
     }
 
-    public List<DocumentTypeDescriptor> getDocumentTypeDescriptors(){
+    public List<Descriptor> getDocumentTypeDescriptors(){
         return documentTypeDescriptors;
     }
 
     public void addDocumentTypeDescriptor(String dtDescriptorName){
-        documentTypeDescriptors.add(new DocumentTypeDescriptor(dtDescriptorName));
+        documentTypeDescriptors.add(new Descriptor(dtDescriptorName));
 
     }
 
     public void removeDocumentTypeDescriptor(String dtDescriptorName){
-        for (DocumentTypeDescriptor descriptor : documentTypeDescriptors){
+        for (Descriptor descriptor : documentTypeDescriptors){
             if (dtDescriptorName.equals(descriptor.getDocumentTypeDescriptorName()))
                 documentTypeDescriptors.remove(descriptor);
         }
     }
 
-    public DocumentTypeDescriptor findDocumentTypeDescriptor(String descriptorName){
-        for (DocumentTypeDescriptor descriptor : getDocumentTypeDescriptors()){
+    public Descriptor findDocumentTypeDescriptor(String descriptorName){
+        for (Descriptor descriptor : getDocumentTypeDescriptors()){
             if(descriptorName.equals(descriptor.getDocumentTypeDescriptorName()))
                 return descriptor;
         }
@@ -101,21 +101,21 @@ public class DocumentType {
         return Objects.hash(getDocumentTypeID(), name, modelLocation, getDocumentTypeDescriptors());
     }
 
-    public class DocumentTypeDescriptor {
+    public class Descriptor {
 
         private long documentTypeDescriptorID;
         private String documentTypeDescriptorName;
 
-        public DocumentTypeDescriptor() {
+        public Descriptor() {
             this(1L, "::default name::");
         }
 
-        public DocumentTypeDescriptor(long documentTypeDescriptorID, String documentTypeDescriptorName) {
+        public Descriptor(long documentTypeDescriptorID, String documentTypeDescriptorName) {
             this.documentTypeDescriptorID = documentTypeDescriptorID;
             this.documentTypeDescriptorName = documentTypeDescriptorName;
         }
 
-        public DocumentTypeDescriptor(String dtDescriptorName) {
+        public Descriptor(String dtDescriptorName) {
             this(1L, dtDescriptorName);
         }
 
@@ -136,7 +136,7 @@ public class DocumentType {
         public boolean equals(Object other) {
             if (this == other) return true;
             if (other == null || getClass() != other.getClass()) return false;
-            DocumentTypeDescriptor that = (DocumentTypeDescriptor) other;
+            Descriptor that = (Descriptor) other;
             return Objects.equals(getDocumentTypeDescriptorID(), that.getDocumentTypeDescriptorID()) &&
                     Objects.equals(getDocumentTypeDescriptorName(), that.getDocumentTypeDescriptorName());
         }

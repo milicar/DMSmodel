@@ -15,7 +15,7 @@ test adding and removing tags for documents
 
 revise "remove descriptors" for both types and documents..
 
-rename to DocumentType.Descriptors maybe?
+
 
 ### Decisions
 

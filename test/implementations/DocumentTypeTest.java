@@ -11,7 +11,7 @@ public class DocumentTypeTest {
     @Test
     public void addDocumentTypeDescriptorsTest() {
         DocumentType dt = new DocumentType();
-        List<DocumentType.DocumentTypeDescriptor> descriptors = dt.getDocumentTypeDescriptors();
+        List<DocumentType.Descriptor> descriptors = dt.getDocumentTypeDescriptors();
 
         Assert.assertNotNull(descriptors);
 
@@ -22,7 +22,7 @@ public class DocumentTypeTest {
         /*
         System.out.println(descriptors.size());
         System.out.println(dt.getDocumentTypeDescriptors().size());
-        for (DocumentType.DocumentTypeDescriptor descriptor : descriptors)
+        for (DocumentType.Descriptor descriptor : descriptors)
             System.out.println(descriptor);
         System.out.println(dt);
         */

@@ -11,8 +11,8 @@ import java.util.Map;
 
 public class DocumentTest {
 
-  //  private DocumentType.DocumentTypeDescriptor descrName1;
-   // private DocumentType.DocumentTypeDescriptor descrName2;
+  //  private DocumentType.Descriptor descrName1;
+   // private DocumentType.Descriptor descrName2;
     private DocumentType dtype;
     private Document doc;
     private Map<String, String> documentDescriptors;

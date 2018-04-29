@@ -10,7 +10,7 @@ public class Document {
     private String documentName;
     private Path documentLocation;
     private DocumentType documentType;
-    private Map<DocumentType.DocumentTypeDescriptor, String> documentDescriptors;
+    private Map<DocumentType.Descriptor, String> documentDescriptors;
     private List<DocumentTag> documentTags;
 
     public Document() {
@@ -30,9 +30,9 @@ public class Document {
         // initialize tag list??
     }
 
-    private Map<DocumentType.DocumentTypeDescriptor, String> giveDefaultDescriptorValues(DocumentType dt) {
-        Map<DocumentType.DocumentTypeDescriptor, String> descriptors = new HashMap<>();
-        for (DocumentType.DocumentTypeDescriptor dtd : dt.getDocumentTypeDescriptors()) {
+    private Map<DocumentType.Descriptor, String> giveDefaultDescriptorValues(DocumentType dt) {
+        Map<DocumentType.Descriptor, String> descriptors = new HashMap<>();
+        for (DocumentType.Descriptor dtd : dt.getDocumentTypeDescriptors()) {
             descriptors.put(dtd, "");
         }
         return descriptors;
@@ -58,18 +58,18 @@ public class Document {
         return documentType;
     }
 
-    public Map<DocumentType.DocumentTypeDescriptor, String> getDocumentDescriptors() {
+    public Map<DocumentType.Descriptor, String> getDocumentDescriptors() {
         return (documentDescriptors != null) ? documentDescriptors : new HashMap<>();
     }
 
     public void addDocumentDescriptors(Map<String, String> documentDescriptors){
         for(String key : documentDescriptors.keySet()){
-            DocumentType.DocumentTypeDescriptor descriptor = getDocumentType().findDocumentTypeDescriptor(key);
+            DocumentType.Descriptor descriptor = getDocumentType().findDocumentTypeDescriptor(key);
             addDocumentDescriptorValue(descriptor, documentDescriptors.get(key));
         }
     }
 
-    private void addDocumentDescriptorValue(DocumentType.DocumentTypeDescriptor descriptorName, String descriptorValue) {
+    private void addDocumentDescriptorValue(DocumentType.Descriptor descriptorName, String descriptorValue) {
         documentDescriptors = getDocumentDescriptors();
         if (documentDescriptors.containsKey(descriptorName))
             documentDescriptors.put(descriptorName, descriptorValue);
@@ -77,7 +77,7 @@ public class Document {
 
     // actually, remove shouldn't remove, only reset to empty string ("")
     /*
-    public void removeDocumentDescriptor(DocumentType.DocumentTypeDescriptor descriptorName){
+    public void removeDocumentDescriptor(DocumentType.Descriptor descriptorName){
         documentDescriptors = getDocumentDescriptors();
 
         if (documentDescriptors.containsKey(descriptorName))
@@ -86,11 +86,11 @@ public class Document {
     */
 
     public void removeDocumentDescriptor(String descriptorName){
-        DocumentType.DocumentTypeDescriptor descriptor = getDocumentType().findDocumentTypeDescriptor(descriptorName);
+        DocumentType.Descriptor descriptor = getDocumentType().findDocumentTypeDescriptor(descriptorName);
         removeDocumentDescriptor(descriptor);
     }
 
-    public void removeDocumentDescriptor(DocumentType.DocumentTypeDescriptor descriptorName) {
+    private void removeDocumentDescriptor(DocumentType.Descriptor descriptorName) {
         documentDescriptors = getDocumentDescriptors();
 
         if (documentDescriptors.containsKey(descriptorName))

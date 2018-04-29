@@ -65,7 +65,7 @@ public class DocumentServiceTest {
 //
 //        Document document = ds.createDocument(employee, "doc1",
 //                "C:", dtype, Collections.EMPTY_MAP);
-//        DocumentType.DocumentTypeDescriptor documentTypeDescriptor1 =
+//        DocumentType.Descriptor documentTypeDescriptor1 =
 //                dtype.getDocumentTypeDescriptors().get(0);
 //        ds.addDocumentDescriptor(employee, document,
 //             documentTypeDescriptor1, "descriptor1value");

@@ -31,7 +31,7 @@ public class DocumentService {
     }
 
 //    public void addDocumentDescriptor(User user, Document document,
-//                                      DocumentType.DocumentTypeDescriptor documentTypeDescriptor,
+//                                      DocumentType.Descriptor documentTypeDescriptor,
 //                                      String descriptorValue)
 //            throws UnauthorisedUserException {
 //
