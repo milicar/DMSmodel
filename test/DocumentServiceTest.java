@@ -72,4 +72,28 @@ public class DocumentServiceTest {
 //
 //        Assert.assertEquals("descriptor1value", document.getDocumentDescriptors().get(documentTypeDescriptor1));
 //    }
+
+
+    @Test
+    public void allowEmployeeToAddDocumentTagTest() throws UnauthorisedUserException {
+        Document document = ds.createDocument(employee, "doc1",
+                "C:", dtype, Collections.EMPTY_MAP);
+        ds.addDocumentTag(employee, document, "tagValue1");
+
+        Assert.assertEquals(1, document.getDocumentTags().size());
+        Assert.assertEquals("tagValue1", document.getDocumentTags().get(0).getDocumentTagValue());
+    }
+
+    @Test
+    public void allowAdminToRemoveDocumentTagTest() throws UnauthorisedUserException {
+        Document document = ds.createDocument(employee, "doc1",
+                "C:", dtype, Collections.EMPTY_MAP);
+        document.addDocumentTag("tagValue1");
+        Assert.assertEquals(1, document.getDocumentTags().size());
+
+        ds.removeDocumentTag(admin, document, "tagValue1");
+
+        Assert.assertEquals(0, document.getDocumentTags().size());
+    }
+
 }

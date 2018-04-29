@@ -11,7 +11,6 @@ check User logged in? Singleton or passed with servlet request?
 
 implementations.DocumentTypeTest is pretty weak, only tests size of descriptor list..
 
-test adding and removing tags for documents
 
 revise "remove descriptors" for both types and documents..
 
@@ -61,6 +60,6 @@ Find/show document (employee and admin)
 Update document (employee and admin)  
 Delete document (employee and admin)  
 
-Add document tags (employee and admin)  
+Add document tags (employee and admin) DONE: DocumentService
 
 Send document to contact/business partner (employee and admin)

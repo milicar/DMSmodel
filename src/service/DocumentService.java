@@ -39,4 +39,21 @@ public class DocumentService {
 //            document.addDocumentDescriptorValue(documentTypeDescriptor, descriptorValue);
 //        else throw new UnauthorisedUserException();
 //    }
+
+    public void addDocumentTag(User user, Document document, String tagValue) throws UnauthorisedUserException{
+        if(isAuthorised(user)){
+            document.addDocumentTag(tagValue);
+        } else throw new UnauthorisedUserException();
+
+        return;
+    }
+
+    public void removeDocumentTag(User user, Document document, String tagValue) throws UnauthorisedUserException{
+        if(isAuthorised(user)){
+            document.removeDocumentTag(tagValue);
+        } else throw new UnauthorisedUserException();
+
+        return;
+    }
+
 }

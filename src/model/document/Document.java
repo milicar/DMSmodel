@@ -106,11 +106,21 @@ public class Document {
         documentTags.add(new DocumentTag(tag));
     }
 
-    public void removeDocumentTag(String tagValue) {
-        for (DocumentTag tag : documentTags) {
-            if (tag.getDocumentTagValue().equals(tagValue))
-                documentTags.remove(tag);
+    public DocumentTag findDocumentTagByValue(String tagValue){
+        for(DocumentTag documentTag : getDocumentTags()){
+            if(tagValue.equals(documentTag.documentTagValue))
+                return documentTag;
         }
+        return null;
+    }
+
+    public void removeDocumentTag(String tagValue) {
+        documentTags = getDocumentTags();
+        DocumentTag tag = findDocumentTagByValue(tagValue);
+
+        if(documentTags.contains(tag))
+            documentTags.remove(tag);
+
     }
 
     @Override
@@ -145,23 +155,46 @@ public class Document {
 
 
     public class DocumentTag {
-        private String documentTagID;
+        private long documentTagID;
         private String documentTagValue;
 
         public DocumentTag() {
+            this.documentTagID = generateTagID();
+            this.documentTagValue = "";
         }
 
         public DocumentTag(String documentTagValue) {
+            this.documentTagID = generateTagID();
             this.documentTagValue = documentTagValue;
+        }
+
+        private long generateTagID() {
+            return 7L;
         }
 
         public String getDocumentTagValue() {
             return documentTagValue;
         }
 
+
         @Override
         public String toString() {
             return "documentTagValue='" + documentTagValue + '\'';
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            DocumentTag that = (DocumentTag) o;
+            return documentTagID == that.documentTagID &&
+                    Objects.equals(documentTagValue, that.documentTagValue);
+        }
+
+        @Override
+        public int hashCode() {
+
+            return Objects.hash(documentTagID, documentTagValue);
         }
     }
 }
