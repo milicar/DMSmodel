@@ -4,21 +4,39 @@
 
 ### TODOs
 
-DocumentType and Document id generators return constant id.
+id generators return constant id.
+
+revise "remove descriptors" for both types and documents..
+
+improve dummy isPrimary(parentProcess) from ActivityService.class when Process is implemented
+
+should getActivityDocumentTypeList be public? currently it's only used in a test
+
+separate isLoggedIn(user) from isAuthorised(user) checks 
+
+### Dilemmas
 
 check User logged in? Singleton or passed with servlet request?   
 ** (maybe not allow guests any further than UI, which would break user authentication to logged in at the top, role which is checked at business level - each so, and company which is checked where?  
 
-implementations.DocumentTypeTest is pretty weak, only tests size of descriptor list..
+is user interface/view a control mechanism?   
+Pros: 
+* if employee doesn't have an option to create process, for example,
+should there even be a precondition check isAuthorised(user)?
+* faster view generation
+   
+Cons: 
+* what about UI changes? maybe some future UI shows "add a process" button to employee..
+* how much processing should be left to client machine?
 
+If all updates to a record/object basically go through a constructor, then there's no need for setters
+This is tied to user interface, how broken down the controls are.. 
 
-revise "remove descriptors" for both types and documents..
-
-
+These service classes look like static utility classes
 
 ### Decisions
 
-document service has only "create document" with adding descriptors within it (so user cannot create a document without filling in descriptor values)  
+At this point, document service has only "create document" with adding descriptors within it (so user cannot create a document without filling in descriptor values)  
 users will click on create doc, and fill everything including descriptors  
 same is for document type - descriptors are added at the creation or update time  
 BUT what about removing descriptors? It should also be within create/update, but still isn't
@@ -45,21 +63,21 @@ Find/show process (admin)
 Update process (admin)  
 Delete process (admin)  
 
-Create activity (admin)  
+~~Create activity (admin) DONE: ActivityService~~  
 Find/show activity (admin and employee?)  
 Update activity (admin)  
 Delete activity (admin)  
 
-Create document type (admin)  DONE: DocumentTypeService
+~~Create document type (admin) DONE: DocumentTypeService~~  
 Find document type (admin and employee)  
 Update document type (admin)  
 Delete document type (admin)  
 
-Create document (employee and admin) DONE: DocumentService   
+~~Create document (employee and admin) DONE: DocumentService~~   
 Find/show document (employee and admin)  
 Update document (employee and admin)  
 Delete document (employee and admin)  
 
-Add document tags (employee and admin) DONE: DocumentService
+~~Add document tags (employee and admin) DONE: DocumentService~~
 
 Send document to contact/business partner (employee and admin)

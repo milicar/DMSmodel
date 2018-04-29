@@ -19,13 +19,9 @@ public class DocumentTypeTest {
         dt.addDocumentTypeDescriptor("descriptor2");
 
         Assert.assertEquals(2, dt.getDocumentTypeDescriptors().size());
-        /*
-        System.out.println(descriptors.size());
-        System.out.println(dt.getDocumentTypeDescriptors().size());
-        for (DocumentType.Descriptor descriptor : descriptors)
-            System.out.println(descriptor);
-        System.out.println(dt);
-        */
+        Assert.assertEquals("descriptor1", dt.getDocumentTypeDescriptors().get(0).getDocumentTypeDescriptorName());
+        Assert.assertEquals("descriptor2", dt.getDocumentTypeDescriptors().get(1).getDocumentTypeDescriptorName());
+
     }
 
     @Test
@@ -34,15 +30,11 @@ public class DocumentTypeTest {
                 "location/path", "description");
         dt.addDocumentTypeDescriptor("descriptor1");
         dt.addDocumentTypeDescriptor("descriptor2");
-
         Assert.assertEquals(2, dt.getDocumentTypeDescriptors().size());
 
         dt.removeDocumentTypeDescriptor("descriptor1");
-        Assert.assertEquals(1, dt.getDocumentTypeDescriptors().size());
-        /*
-        System.out.println(dt);
-        System.out.println(dt.getDocumentTypeModelLocation());
-        */
 
+        Assert.assertEquals(1, dt.getDocumentTypeDescriptors().size());
+        Assert.assertNotEquals("descriptor1", dt.getDocumentTypeDescriptors().get(0).getDocumentTypeDescriptorName());
     }
 }
