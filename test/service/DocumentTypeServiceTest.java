@@ -20,12 +20,8 @@ public class DocumentTypeServiceTest {
 
     @Before
     public void setUp() {
-        employee = new User();
-        employee.setRole(User.Role.EMPLOYEE);
-
-        admin = new User();
-        admin.setRole(User.Role.ADMIN);
-
+        employee = new User(User.Role.EMPLOYEE);
+        admin = new User(User.Role.ADMIN);
         dtService = new DocumentTypeService();
     }
 

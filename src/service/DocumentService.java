@@ -1,6 +1,7 @@
 package service;
 
 import exception.UnauthorisedUserException;
+import model.BusinessContact;
 import model.CheckUser;
 import model.User;
 import model.document.Document;
@@ -50,6 +51,17 @@ public class DocumentService implements CheckUser {
         else {
             document.removeDocumentTag(tagValue);
         }
+    }
+
+    public void sendDocumentToBusinessContact(User user, Document document, BusinessContact contact) throws UnauthorisedUserException {
+        if(isNotAuthorised(user) || isNotLoggedIn(user)) throw new UnauthorisedUserException();
+
+        String from = user.getEmail();
+        String to = contact.getEmail();
+        someCrazyMethodThatSendsEmails(from, to, document);
+    }
+
+    private void someCrazyMethodThatSendsEmails(String from, String to, Document document) {
     }
 
     @Override

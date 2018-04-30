@@ -24,10 +24,8 @@ public class ProcessServiceTest {
     @Before
     public void setUp() throws OperationNotAllowedException {
         processService = new ProcessService();
-        admin = new User();
-        admin.setRole(User.Role.ADMIN);
-        employee = new User();
-        employee.setRole(User.Role.EMPLOYEE);
+        admin = new User(User.Role.ADMIN);
+        employee = new User(User.Role.EMPLOYEE);
         company = new Company("company");
         processWithoutChildren = new Process("processWithoutChildren");
 

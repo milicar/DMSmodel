@@ -9,21 +9,31 @@ public class User {
     private long companyID;
     private String username;
     private String password;
+    private String userEmail;
     private Role role;
+
+    public String getEmail() {
+        return null;
+    }
 
     public enum Role {ADMIN, EMPLOYEE}
 
-    public User() {
+    public User(Role role) {
+        this("emptyUser", "", -1L, "", "", role);
     }
 
-    public User(long userID, String firstName, String lastName, long companyID, String username, String password, Role role) {
-        this.userID = userID;
+    public User(String firstName, String lastName, long companyID, String username, String password, Role role) {
+        this.userID = generateuserID();
         this.firstName = firstName;
         this.lastName = lastName;
         this.companyID = companyID;
         this.username = username;
         this.password = password;
         this.role = role;
+    }
+
+    private long generateuserID() {
+        return 3L;
     }
 
     public long getUserID() {

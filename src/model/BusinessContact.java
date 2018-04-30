@@ -23,4 +23,8 @@ public class BusinessContact {
     private long generateContactID() {
         return 8L;
     }
+
+    public String getEmail() {
+        return contactEmail;
+    }
 }

@@ -16,10 +16,8 @@ public class BusinessContactServiceTest {
     @Before
     public void setUp() {
         businessContactService = new BusinessContactService();
-        admin = new User();
-        admin.setRole(User.Role.ADMIN);
-        employee = new User();
-        employee.setRole(User.Role.EMPLOYEE);
+        admin = new User(User.Role.ADMIN);
+        employee = new User(User.Role.EMPLOYEE);
     }
 
     @Test

@@ -24,11 +24,8 @@ public class DocumentServiceTest {
 
     @Before
     public void setUp() throws UnauthorisedUserException {
-        admin = new User();
-        admin.setRole(User.Role.ADMIN);
-
-        employee = new User();
-        employee.setRole(User.Role.EMPLOYEE);
+        admin = new User(User.Role.ADMIN);
+        employee = new User(User.Role.EMPLOYEE);
 
         dts = new DocumentTypeService();
         ds = new DocumentService();

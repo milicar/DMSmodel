@@ -17,10 +17,8 @@ public class CompanyServiceTest {
 
     @Before
     public void setUp() {
-        admin = new User();
-        admin.setRole(User.Role.ADMIN);
-        employee = new User();
-        employee.setRole(User.Role.EMPLOYEE);
+        admin = new User(User.Role.ADMIN);
+        employee = new User(User.Role.EMPLOYEE);
         companyService = new CompanyService();
         businessContactService = new BusinessContactService();
 

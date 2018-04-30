@@ -4,6 +4,8 @@
 
 ### TODOs
 
+find/read, update and delete are tied to persistence.. 
+
 id generators return constant id.
 
 revise "remove descriptors" for both types and documents..
@@ -85,4 +87,4 @@ Delete document (employee and admin)
 
 ~~Add document tags (employee and admin) DONE: DocumentService~~
 
-Send document to contact/business partner (employee and admin)
+Send document to contact/business partner (employee and admin) STUBBED
