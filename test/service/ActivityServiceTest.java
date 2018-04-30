@@ -1,3 +1,6 @@
+package service;
+
+import exception.OperationNotAllowedException;
 import exception.UnauthorisedUserException;
 import model.document.Document;
 import model.document.DocumentType;
@@ -20,20 +23,20 @@ public class ActivityServiceTest {
     private Activity createdActivity;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         employee = new User();
         employee.setRole(User.Role.EMPLOYEE);
 
         admin = new User();
         admin.setRole(User.Role.ADMIN);
 
-        parentProcess = new Process();
+        parentProcess = new Process("parentProcess");
 
         activityService = new ActivityService();
     }
 
     @Test
-    public void allowAdminToCreateActivity() throws UnauthorisedUserException {
+    public void allowAdminToCreateActivity() throws UnauthorisedUserException, OperationNotAllowedException {
         createdActivity = activityService.createActivity(admin, "activityName1", "activityDescription1", parentProcess);
 
         Assert.assertEquals("activityName1", createdActivity.getActivityName());
@@ -41,12 +44,12 @@ public class ActivityServiceTest {
     }
 
     @Test(expected = UnauthorisedUserException.class)
-    public void denyEmployeeCreatingActivity() throws UnauthorisedUserException {
+    public void denyEmployeeCreatingActivity() throws UnauthorisedUserException, OperationNotAllowedException {
         Activity notCreatedActivity = activityService.createActivity(employee, "name1", "description1", parentProcess);
     }
 
     @Test
-    public void allowAdminToAddDocumentType() throws UnauthorisedUserException {
+    public void allowAdminToAddDocumentType() throws UnauthorisedUserException, OperationNotAllowedException {
         createdActivity = activityService.createActivity(admin, "activityName1", "activityDescription1", parentProcess);
         DocumentType documentType = new DocumentType("doc1");
 
@@ -58,7 +61,7 @@ public class ActivityServiceTest {
     }
 
     @Test
-    public void allowAdminToAddDocumentTypeList() throws UnauthorisedUserException {
+    public void allowAdminToAddDocumentTypeList() throws UnauthorisedUserException, OperationNotAllowedException {
         createdActivity = activityService.createActivity(admin, "activityName1", "activityDescription1", parentProcess);
         DocumentType docType1 = new DocumentType("doc1");
         DocumentType docType2 = new DocumentType("doc2");
@@ -70,7 +73,7 @@ public class ActivityServiceTest {
     }
 
     @Test(expected = UnauthorisedUserException.class)
-    public void denyEmployeeAddingDocumentType() throws UnauthorisedUserException {
+    public void denyEmployeeAddingDocumentType() throws UnauthorisedUserException, OperationNotAllowedException {
         createdActivity = activityService.createActivity(admin, "activityName1", "activityDescription1", parentProcess);
         DocumentType documentType = new DocumentType("doc1");
 

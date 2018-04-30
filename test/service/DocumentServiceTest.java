@@ -1,3 +1,5 @@
+package service;
+
 import exception.UnauthorisedUserException;
 import model.User;
 import model.document.Document;

@@ -1,3 +1,5 @@
+package service;
+
 import exception.UnauthorisedUserException;
 import model.User;
 import model.document.DocumentType;
@@ -17,7 +19,7 @@ public class DocumentTypeServiceTest {
     private DocumentTypeService dtService;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         employee = new User();
         employee.setRole(User.Role.EMPLOYEE);
 

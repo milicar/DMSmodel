@@ -20,6 +20,11 @@ public class Activity {
         this.activityID = generateID();
     }
 
+    public Activity(String activityName){
+        this(0L, activityName, "");
+        this.activityID = generateID();
+    }
+
     public Activity(String activityName, String activityDescription){
         this(0L, activityName, activityDescription);
         this.activityID = generateID();

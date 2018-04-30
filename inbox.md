@@ -4,15 +4,19 @@
 
 ### TODOs
 
+remove .idea files from repo! and update .gitignore
+
 id generators return constant id.
 
 revise "remove descriptors" for both types and documents..
 
-improve dummy isPrimary(parentProcess) from ActivityService.class when Process is implemented
-
 should getActivityDocumentTypeList be public? currently it's only used in a test
 
 separate isLoggedIn(user) from isAuthorised(user) checks 
+
+destatic-ise services?
+
+I think services should deal with exceptions, not rethrow them 
 
 ### Dilemmas
 
@@ -21,7 +25,7 @@ check User logged in? Singleton or passed with servlet request?
 
 is user interface/view a control mechanism?   
 Pros: 
-* if employee doesn't have an option to create process, for example,
+* if employee doesn't have an option (eg button) to create process, for example,
 should there even be a precondition check isAuthorised(user)?
 * faster view generation
    
@@ -29,11 +33,15 @@ Cons:
 * what about UI changes? maybe some future UI shows "add a process" button to employee..
 * how much processing should be left to client machine?
 
-If all updates to a record/object basically go through a constructor, then there's no need for setters
-This is tied to user interface, how broken down the controls are.. 
+If all updates to a record/object basically go through a constructor, then there's no need for setters.
+This is tied to user interface, how broken down the controls are - is it "fill all fields and click create/update" 
+or are there buttons to change one field at a time. 
 
 These service classes look like static utility classes
 
+isComplex check for processes in ActivityService talks directly to instance of Process. 
+Should it go through ProcessService?  
+ 
 ### Decisions
 
 At this point, document service has only "create document" with adding descriptors within it (so user cannot create a document without filling in descriptor values)  
@@ -58,8 +66,8 @@ Find/show contact (admin and employee)
 Update contact (admin)  
 Delete contact (admin)  
 
-Create process (admin)  
-Find/show process (admin)  
+~~Create process (admin) DONE: ProcessService~~  
+Find/show process (admin and employee)  
 Update process (admin)  
 Delete process (admin)  
 
