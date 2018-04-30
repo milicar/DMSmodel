@@ -57,8 +57,8 @@ Find/show company (admin)
 Update company (admin)  
 Delete company (admin)  
 
-Create company contact list (admin)  
-Add new contact to contact list (admin)  
+~~Create company contact list (admin) DONE: BusinessContactService~~  
+~~Add new contact to contact list (admin) DONE: CompanyService~~    
 Find/show contact (admin and employee)  
 Update contact (admin)  
 Delete contact (admin)  

@@ -1,6 +1,7 @@
 package service;
 
 import exception.UnauthorisedUserException;
+import model.BusinessContact;
 import model.CheckUser;
 import model.User;
 import model.process.hierarchy.Company;
@@ -21,5 +22,11 @@ public class CompanyService implements CheckUser {
     @Override
     public boolean isNotLoggedIn(User user) {
         return false;
+    }
+
+    public void addCompanyContact(User user, Company company, BusinessContact businessContact) throws UnauthorisedUserException {
+        if(isNotAuthorised(user) || isNotLoggedIn(user)) throw new UnauthorisedUserException();
+
+        company.addBusinessContact(businessContact);
     }
 }
