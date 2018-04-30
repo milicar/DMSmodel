@@ -2,18 +2,19 @@ package service;
 
 import exception.OperationNotAllowedException;
 import exception.UnauthorisedUserException;
+import model.CheckUser;
 import model.User;
 import model.process.hierarchy.Company;
 import model.process.hierarchy.Process;
 
-public class ProcessService {
+public class ProcessService implements CheckUser {
 
     public ProcessService() {
     }
 
     public Process createProcess(User user, Object parent, String processName, String processDescription) throws OperationNotAllowedException, UnauthorisedUserException {
 
-        if (!isAuthorised(user)) throw new UnauthorisedUserException();
+        if (isNotAuthorised(user)) throw new UnauthorisedUserException();
 
         if (parent instanceof Process) {
             return createSubprocess((Process) parent, processName, processDescription);
@@ -39,7 +40,13 @@ public class ProcessService {
     }
 
 
-    private boolean isAuthorised(User user) {
-        return user.getRole() == User.Role.ADMIN;
+    @Override
+    public boolean isNotAuthorised(User user) {
+        return user.getRole() != User.Role.ADMIN;
+    }
+
+    @Override
+    public boolean isNotLoggedIn(User user) {
+        return false;
     }
 }

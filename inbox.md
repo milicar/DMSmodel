@@ -4,15 +4,11 @@
 
 ### TODOs
 
-remove .idea files from repo! and update .gitignore
-
 id generators return constant id.
 
 revise "remove descriptors" for both types and documents..
 
 should getActivityDocumentTypeList be public? currently it's only used in a test
-
-separate isLoggedIn(user) from isAuthorised(user) checks 
 
 destatic-ise services?
 
@@ -49,7 +45,8 @@ users will click on create doc, and fill everything including descriptors
 same is for document type - descriptors are added at the creation or update time  
 BUT what about removing descriptors? It should also be within create/update, but still isn't
 
-
+Didn't ignore all idea files, but now it's too complicated to filter history and untrack... But, watch out next time.
+ 
 ## System operations requirements
 
 Logging in (admin and employee)  

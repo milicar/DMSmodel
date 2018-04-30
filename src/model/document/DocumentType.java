@@ -34,25 +34,25 @@ public class DocumentType {
         return 0L;
     }
 
-    public List<Descriptor> getDocumentTypeDescriptors(){
+    public List<Descriptor> getDocumentTypeDescriptors() {
         return documentTypeDescriptors;
     }
 
-    public void addDocumentTypeDescriptor(String dtDescriptorName){
+    public void addDocumentTypeDescriptor(String dtDescriptorName) {
         documentTypeDescriptors.add(new Descriptor(dtDescriptorName));
 
     }
 
-    public void removeDocumentTypeDescriptor(String dtDescriptorName){
-        for (Descriptor descriptor : documentTypeDescriptors){
+    public void removeDocumentTypeDescriptor(String dtDescriptorName) {
+        for (Descriptor descriptor : documentTypeDescriptors) {
             if (dtDescriptorName.equals(descriptor.getDocumentTypeDescriptorName()))
                 documentTypeDescriptors.remove(descriptor);
         }
     }
 
-    public Descriptor findDocumentTypeDescriptor(String descriptorName){
-        for (Descriptor descriptor : getDocumentTypeDescriptors()){
-            if(descriptorName.equals(descriptor.getDocumentTypeDescriptorName()))
+    public Descriptor findDocumentTypeDescriptor(String descriptorName) {
+        for (Descriptor descriptor : getDocumentTypeDescriptors()) {
+            if (descriptorName.equals(descriptor.getDocumentTypeDescriptorName()))
                 return descriptor;
         }
         return null;
@@ -92,8 +92,8 @@ public class DocumentType {
         DocumentType that = (DocumentType) other;
         return (this.getDocumentTypeID() == that.getDocumentTypeID()) &&
                 this.getDocumentTypeName().equals(that.getDocumentTypeName()) &&
-        this.getDocumentTypeModelLocation().equals(that.getDocumentTypeModelLocation()) &&
-        this.getDocumentTypeDescriptors().equals(that.getDocumentTypeDescriptors());
+                this.getDocumentTypeModelLocation().equals(that.getDocumentTypeModelLocation()) &&
+                this.getDocumentTypeDescriptors().equals(that.getDocumentTypeDescriptors());
     }
 
     @Override

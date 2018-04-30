@@ -1,21 +1,18 @@
 package service;
 
 import exception.UnauthorisedUserException;
+import model.CheckUser;
 import model.User;
 import model.document.DocumentType;
 
 import java.util.Collections;
 import java.util.List;
 
-public class DocumentTypeService {
+public class DocumentTypeService implements CheckUser {
 
     public DocumentTypeService() {
     }
 
-
-    private boolean isAuthorised(User user) {
-        return user.getRole() == User.Role.ADMIN;
-    }
 
     private String generateID() {
         // NOT YET IMPLEMENTED
@@ -36,11 +33,12 @@ public class DocumentTypeService {
                                            String documentTypeModelLocation,
                                            String documentTypeDescription, List<String> documentTypeDescriptors) throws UnauthorisedUserException {
         final DocumentType createdDocumentType;
-        if (isAuthorised(user)) {
+        if (isNotAuthorised(user) || isNotLoggedIn(user)) throw new UnauthorisedUserException();
+        else {
             createdDocumentType = new DocumentType(documentTypeName, documentTypeModelLocation, documentTypeDescription);
             for (String descriptor : documentTypeDescriptors)
                 createdDocumentType.addDocumentTypeDescriptor(descriptor);
-        } else throw new UnauthorisedUserException();
+        }
         return createdDocumentType;
     }
 
@@ -54,9 +52,19 @@ public class DocumentTypeService {
 
     public void removeDocumentTypeDescriptor(User user, DocumentType documentType,
                                              String descriptorValue) throws UnauthorisedUserException {
-        if (isAuthorised(user))
+        if (isNotAuthorised(user) || isNotLoggedIn(user)) throw new UnauthorisedUserException();
+        else {
             documentType.removeDocumentTypeDescriptor(descriptorValue);
-        else throw new UnauthorisedUserException();
+        }
     }
 
+    @Override
+    public boolean isNotAuthorised(User user) {
+        return user.getRole() != User.Role.ADMIN;
+    }
+
+    @Override
+    public boolean isNotLoggedIn(User user) {
+        return false;
+    }
 }

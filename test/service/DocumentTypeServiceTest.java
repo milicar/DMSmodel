@@ -49,7 +49,7 @@ public class DocumentTypeServiceTest {
     }
 
     @Test
-    public void allowAdminToCreateDocumentTypeWithDescriptorsTest() throws UnauthorisedUserException{
+    public void allowAdminToCreateDocumentTypeWithDescriptorsTest() throws UnauthorisedUserException {
 
         DocumentType dt = dtService.createDocumentType(admin,
                 1L, "type1",

@@ -20,12 +20,12 @@ public class Activity {
         this.activityID = generateID();
     }
 
-    public Activity(String activityName){
+    public Activity(String activityName) {
         this(0L, activityName, "");
         this.activityID = generateID();
     }
 
-    public Activity(String activityName, String activityDescription){
+    public Activity(String activityName, String activityDescription) {
         this(0L, activityName, activityDescription);
         this.activityID = generateID();
     }
@@ -44,7 +44,7 @@ public class Activity {
         return activityDocumentTypes;
     }
 
-    private long generateID(){
+    private long generateID() {
         return 0L;
     }
 
@@ -64,12 +64,12 @@ public class Activity {
         return activityDocumentTypes;
     }
 
-    public void addActivityDocumentTypes(Direction documentDirection, List<DocumentType> documentTypes){
-        for(DocumentType documentType : documentTypes)
+    public void addActivityDocumentTypes(Direction documentDirection, List<DocumentType> documentTypes) {
+        for (DocumentType documentType : documentTypes)
             addActivityDocumentType(documentDirection, documentType);
     }
 
-    public void addActivityDocumentType(Direction documentDirection, DocumentType documentType){
+    public void addActivityDocumentType(Direction documentDirection, DocumentType documentType) {
         List<DocumentType> documentTypeList = activityDocumentTypes.get(documentDirection);
         documentTypeList.add(documentType);
         this.activityDocumentTypes.put(documentDirection, documentTypeList);

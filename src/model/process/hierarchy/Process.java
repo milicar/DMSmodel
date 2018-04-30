@@ -15,6 +15,7 @@ public class Process {
     private List<Process> subprocesses;
 
     private List<Activity> activities;
+
     public Process(long processID, String processName, String processShortDescription) {
         this.processID = processID;
         this.processName = processName;
@@ -60,8 +61,8 @@ public class Process {
     }
 
     public void addSubprocess(Process subprocess) throws OperationNotAllowedException {
-        if(isPrimitive()) throw new OperationNotAllowedException("Process is primary");
-        if(getSubprocessesList() == null) {
+        if (isPrimitive()) throw new OperationNotAllowedException("Process is primary");
+        if (getSubprocessesList() == null) {
             subprocesses = new ArrayList<>();
         }
         subprocesses.add(subprocess);
@@ -72,7 +73,7 @@ public class Process {
         return (activities != null) && activities.size() > 0;
     }
 
-    public void removeSubprocess(Process subprocess){
+    public void removeSubprocess(Process subprocess) {
         subprocesses.remove(subprocess);
     }
 
@@ -81,8 +82,8 @@ public class Process {
     }
 
     public void addActivity(Activity activity) throws OperationNotAllowedException {
-        if(isComplex()) throw new OperationNotAllowedException("Process is complex");
-        if(getActivitiesList() == null) {
+        if (isComplex()) throw new OperationNotAllowedException("Process is complex");
+        if (getActivitiesList() == null) {
             activities = new ArrayList<>();
         }
         activities.add(activity);

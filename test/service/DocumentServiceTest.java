@@ -44,7 +44,9 @@ public class DocumentServiceTest {
     @Test
     public void allowAdminToCreateDocumentTest() throws UnauthorisedUserException {
 
-        Map<String, String> descriptorMap = new HashMap<String, String>(){{put("descriptor1name", "descriptor1value");}};
+        Map<String, String> descriptorMap = new HashMap<String, String>() {{
+            put("descriptor1name", "descriptor1value");
+        }};
         Document document = new Document("doc1", "C:", dtype);
         document.addDocumentDescriptors(descriptorMap);
 
@@ -54,7 +56,7 @@ public class DocumentServiceTest {
     }
 
     @Test
-    public void allowEmployeeToCreateDocumentTest() throws UnauthorisedUserException{
+    public void allowEmployeeToCreateDocumentTest() throws UnauthorisedUserException {
 
         Document document = ds.createDocument(employee, "doc1",
                 "C:", dtype, Collections.EMPTY_MAP);

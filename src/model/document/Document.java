@@ -62,8 +62,8 @@ public class Document {
         return (documentDescriptors != null) ? documentDescriptors : new HashMap<>();
     }
 
-    public void addDocumentDescriptors(Map<String, String> documentDescriptors){
-        for(String key : documentDescriptors.keySet()){
+    public void addDocumentDescriptors(Map<String, String> documentDescriptors) {
+        for (String key : documentDescriptors.keySet()) {
             DocumentType.Descriptor descriptor = getDocumentType().findDocumentTypeDescriptor(key);
             addDocumentDescriptorValue(descriptor, documentDescriptors.get(key));
         }
@@ -85,7 +85,7 @@ public class Document {
         }
     */
 
-    public void removeDocumentDescriptor(String descriptorName){
+    public void removeDocumentDescriptor(String descriptorName) {
         DocumentType.Descriptor descriptor = getDocumentType().findDocumentTypeDescriptor(descriptorName);
         removeDocumentDescriptor(descriptor);
     }
@@ -106,9 +106,9 @@ public class Document {
         documentTags.add(new DocumentTag(tag));
     }
 
-    public DocumentTag findDocumentTagByValue(String tagValue){
-        for(DocumentTag documentTag : getDocumentTags()){
-            if(tagValue.equals(documentTag.documentTagValue))
+    public DocumentTag findDocumentTagByValue(String tagValue) {
+        for (DocumentTag documentTag : getDocumentTags()) {
+            if (tagValue.equals(documentTag.documentTagValue))
                 return documentTag;
         }
         return null;
@@ -118,9 +118,7 @@ public class Document {
         documentTags = getDocumentTags();
         DocumentTag tag = findDocumentTagByValue(tagValue);
 
-        if(documentTags.contains(tag))
-            documentTags.remove(tag);
-
+        documentTags.remove(tag);
     }
 
     @Override

@@ -17,7 +17,7 @@ public class DocumentTest {
     private Map<String, String> documentDescriptors;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         dtype = new DocumentType();
         dtype.addDocumentTypeDescriptor("descrName1");
         dtype.addDocumentTypeDescriptor("descrName2");
@@ -78,12 +78,10 @@ public class DocumentTest {
         Assert.assertEquals("current", doc.getDocumentTags().get(1).getDocumentTagValue());
 
 
-
-
     }
 
     @Test
-    public void ignoreRemovingNonExistingTag()  {
+    public void ignoreRemovingNonExistingTag() {
         doc.addDocumentTag("tagValue1");
         Assert.assertEquals(1, doc.getDocumentTags().size());
 
