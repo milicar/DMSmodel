@@ -14,7 +14,7 @@ public class ProcessService implements CheckUser {
 
     public Process createProcess(User user, Object parent, String processName, String processDescription) throws OperationNotAllowedException, UnauthorisedUserException {
 
-        if (isNotAuthorised(user)) throw new UnauthorisedUserException();
+        if (isNotAuthorised(user) || isNotLoggedIn(user)) throw new UnauthorisedUserException();
 
         if (parent instanceof Process) {
             return createSubprocess((Process) parent, processName, processDescription);
@@ -29,6 +29,7 @@ public class ProcessService implements CheckUser {
         else {
             Process createdProcess = new Process(processName, processDescription);
             parent.addSubprocess(createdProcess);
+            createdProcess.setParentID(parent.getProcessID());
             return createdProcess;
         }
     }
@@ -36,6 +37,7 @@ public class ProcessService implements CheckUser {
     private Process createCompanyProcess(Company parent, String processName, String processDescription) {
         Process createdProcess = new Process(processName, processDescription);
         parent.addProcess(createdProcess);
+        createdProcess.setParentID(parent.getCompanyID());
         return createdProcess;
     }
 

@@ -16,25 +16,19 @@ public class Activity {
     public enum Direction {IN, OUT}
 
     public Activity() {
-        this(0L, "", "");
-        this.activityID = generateID();
+        this("", "");
     }
 
     public Activity(String activityName) {
-        this(0L, activityName, "");
-        this.activityID = generateID();
+        this(activityName, "");
     }
 
     public Activity(String activityName, String activityDescription) {
-        this(0L, activityName, activityDescription);
         this.activityID = generateID();
-    }
-
-    public Activity(long activityID, String activityName, String activityDescription) {
-        this.activityID = activityID;
         this.activityName = activityName;
         this.activityDescription = activityDescription;
         this.activityDocumentTypes = initializeActivityDocumentTypes();
+
     }
 
     private HashMap<Direction, List<DocumentType>> initializeActivityDocumentTypes() {

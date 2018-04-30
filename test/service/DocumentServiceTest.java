@@ -7,10 +7,7 @@ import model.document.DocumentType;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import service.DocumentService;
-import service.DocumentTypeService;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -48,7 +45,7 @@ public class DocumentServiceTest {
             put("descriptor1name", "descriptor1value");
         }};
         Document document = new Document("doc1", "C:", dtype);
-        document.addDocumentDescriptors(descriptorMap);
+        document.addDocumentDescriptorValues(descriptorMap);
 
 
         Assert.assertEquals(ds.createDocument(admin, "doc1",

@@ -14,11 +14,7 @@ public class Document {
     private List<DocumentTag> documentTags;
 
     public Document() {
-        this.documentID = generateID();
-        this.documentName = "";
-        this.documentLocation = Paths.get("");
-        this.documentType = new DocumentType();
-        this.documentDescriptors = Collections.emptyMap();
+        this("", "", new DocumentType());
     }
 
     public Document(String documentName, String documentLocation, DocumentType documentType) {
@@ -27,7 +23,6 @@ public class Document {
         this.documentLocation = Paths.get(documentLocation);
         this.documentType = documentType;
         this.documentDescriptors = giveDefaultDescriptorValues(documentType);
-        // initialize tag list??
     }
 
     private Map<DocumentType.Descriptor, String> giveDefaultDescriptorValues(DocumentType dt) {
@@ -62,7 +57,7 @@ public class Document {
         return (documentDescriptors != null) ? documentDescriptors : new HashMap<>();
     }
 
-    public void addDocumentDescriptors(Map<String, String> documentDescriptors) {
+    public void addDocumentDescriptorValues(Map<String, String> documentDescriptors) {
         for (String key : documentDescriptors.keySet()) {
             DocumentType.Descriptor descriptor = getDocumentType().findDocumentTypeDescriptor(key);
             addDocumentDescriptorValue(descriptor, documentDescriptors.get(key));

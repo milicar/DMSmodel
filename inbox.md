@@ -52,7 +52,7 @@ Didn't ignore all idea files, but now it's too complicated to filter history and
 Logging in (admin and employee)  
 Logging out (admin and employee)   
 
-Create company (admin)  
+~~Create company (admin) DONE: CompanyService~~  
 Find/show company (admin)  
 Update company (admin)  
 Delete company (admin)  

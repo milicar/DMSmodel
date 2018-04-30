@@ -47,6 +47,7 @@ public class ProcessServiceTest {
 
         Assert.assertNotNull(created);
         Assert.assertTrue(company.getProcessList().contains(created));
+        Assert.assertEquals(company.getCompanyID(), created.getParentID());
     }
 
     @Test
@@ -56,6 +57,7 @@ public class ProcessServiceTest {
 
         Assert.assertNotNull(subprocess);
         Assert.assertTrue(processWithoutChildren.getSubprocessesList().contains(subprocess));
+        Assert.assertEquals(processWithoutChildren.getProcessID(), subprocess.getParentID());
     }
 
     @Test
@@ -65,6 +67,7 @@ public class ProcessServiceTest {
 
         Assert.assertEquals(2, complexProcess.getSubprocessesList().size());
         Assert.assertTrue(complexProcess.getSubprocessesList().contains(createdSubprocess));
+        Assert.assertEquals(complexProcess.getProcessID(), createdSubprocess.getParentID());
 
 
     }

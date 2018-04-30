@@ -16,20 +16,14 @@ public class Process {
 
     private List<Activity> activities;
 
-    public Process(long processID, String processName, String processShortDescription) {
-        this.processID = processID;
+    public Process(String processName, String processShortDescription) {
+        this.processID = generateProcessID();
         this.processName = processName;
         this.processShortDescription = processShortDescription;
     }
 
-    public Process(String processName, String processShortDescription) {
-        this(9L, processName, processShortDescription);
-        this.processID = generateProcessID();
-    }
-
     public Process(String processName) {
-        this(9L, processName, "");
-        this.processID = generateProcessID();
+        this(processName, "");
     }
 
     private long generateProcessID() {
@@ -66,7 +60,7 @@ public class Process {
             subprocesses = new ArrayList<>();
         }
         subprocesses.add(subprocess);
-        subprocess.setParentID(this.getProcessID());
+        //subprocess.setParentID(this.getProcessID());
     }
 
     public boolean isPrimitive() {

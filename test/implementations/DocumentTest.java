@@ -6,7 +6,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,7 +31,7 @@ public class DocumentTest {
 
     @Test
     public void addDocumentDescriptorsTest() {
-        doc.addDocumentDescriptors(documentDescriptors);
+        doc.addDocumentDescriptorValues(documentDescriptors);
 
         Assert.assertTrue(doc.getDocumentDescriptors().containsValue("descrValue1"));
         Assert.assertTrue(doc.getDocumentDescriptors().containsValue("descrValue2"));
@@ -40,7 +39,7 @@ public class DocumentTest {
 
     @Test
     public void removeDocumentDescriptorValuesTest() {
-        doc.addDocumentDescriptors(documentDescriptors);
+        doc.addDocumentDescriptorValues(documentDescriptors);
 
         Assert.assertEquals(2, doc.getDocumentDescriptors().size());
         Assert.assertTrue(doc.getDocumentDescriptors().containsValue("descrValue1"));

@@ -23,7 +23,7 @@ public class DocumentService implements CheckUser {
         if (isNotAuthorised(user) || isNotLoggedIn(user)) throw new UnauthorisedUserException();
         else {
             createdDocument = new Document(documentName, documentLocation, documentType);
-            createdDocument.addDocumentDescriptors(descriptors);
+            createdDocument.addDocumentDescriptorValues(descriptors);
         }
         return createdDocument;
     }

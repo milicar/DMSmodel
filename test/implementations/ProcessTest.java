@@ -34,9 +34,6 @@ public class ProcessTest {
 
         Assert.assertEquals(2, process.getSubprocessesList().size());
         Assert.assertTrue(process.getSubprocessesList().containsAll(Arrays.asList(subprocess1, subprocess2)));
-        Assert.assertEquals(process.getProcessID(), subprocess1.getParentID());
-        Assert.assertEquals(process.getProcessID(), subprocess2.getParentID());
-
     }
 
     @Test(expected = OperationNotAllowedException.class)
